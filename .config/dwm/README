@@ -1,0 +1,2 @@
+copy the contents patches folder to /etc/portage/patches/x11-wm/dwm
+and the contents of the dwm folder to /etc/portage/savedconfig/x11-wm/

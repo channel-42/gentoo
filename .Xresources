@@ -1,0 +1,43 @@
+! __   __                                                              
+!/\ \ /\ \                                                             
+!\ `\`\/'/'  _ __    __    ____    ___   __  __    ___     __    ____  
+! `\/ > <   /\`'__\/'__`\ /',__\  / __`\/\ \/\ \  /'___\ /'__`\ /',__\ 
+! __ \/'/\`\\ \ \//\  __//\__, `\/\ \L\ \ \ \_\ \/\ \__//\  __//\__, `\
+!/\_\/\_\\ \_\ \_\\ \____\/\____/\ \____/\ \____/\ \____\ \____\/\____/
+!\/_/\/_/ \/_/\/_/ \/____/\/___/  \/___/  \/___/  \/____/\/____/\/___/ 
+
+!Copy paste bindings
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Control-Meta-C: builtin-string: 
+URxvt.keysym.Control-Meta-V: builtin-string: 
+URxvt.iso14755: false
+
+!General settings
+URxvt.scrollBar: false
+URxvt.internalBorder:  40
+!URxvt.font: xft:xos4 Terminess Powerline:style=Regular:size=11
+URxvt.font: xft:Hack Nerd Font Mono:style=Regular:size=10,xft:IPAMincho:style=Regular:size=10,xft:M+ 1c
+URxvt.cursorBlink: True
+URxvt*depth: 32
+!COLORSCHME
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+URxvt.background: [90]#141022
+*.background: #141022
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #7957B9
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6

@@ -1,0 +1,290 @@
+"            __                            
+"    __  __ /\_\    ___ ___   _ __   ___   
+"   /\ \/\ \\/\ \ /' __` __`\/\`'__\/'___\ 
+" __\ \ \_/ |\ \ \/\ \/\ \/\ \ \ \//\ \__/ 
+"/\_\\ \___/  \ \_\ \_\ \_\ \_\ \_\\ \____\
+"\/_/ \/__/    \/_/\/_/\/_/\/_/\/_/ \/____/
+"                                          
+set nocompatible              " required
+filetype off                  " required
+set ignorecase
+set smartcase
+
+set viminfo+=n~/.vim/viminfo
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" all plugin
+Plugin 'gabrielelana/vim-markdown'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+Plugin 'dracula/vim'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Raimondi/delimitMate'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mhinz/vim-startify'
+Plugin 'ap/vim-css-color'
+Plugin 'Yggdroot/indentLine'
+Plugin 'aars/syntastic-platformio'
+"Plugin 'wfxr/minimap.vim'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
+Plugin 'lervag/vimtex'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+call glaive#Install()        " enable this line after the installation of glaive
+filetype plugin indent on    " required
+
+" custom setting
+syntax on
+set mouse=a
+set number
+set encoding=utf-8
+set backspace=indent,eol,start
+set cursorline
+set nospell
+
+set fillchars+=vert:\▏
+" indent for global
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+
+"for markdown suffixes
+au BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md  set ft=markdown
+au BufNewFile,BufRead *.ino set ft=c
+
+" indent for special file
+autocmd FileType c,cpp,html,css,ino setlocal expandtab shiftwidth=2 softtabstop=2 cindent nofoldenable 
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 autoindent
+autocmd VimLeave *.tex !bash $HOME/scripts/bash/texclear.sh %
+
+" get current song
+function! NowPlaying()
+    "shell script checks if mpc first line starts with 'volume' (output when
+    "not playing) and returns ~~, else returns song name
+    let g:song = system("[[ $(mpc | head -n 1) = volume* ]] && echo ' ~~ '  || echo $(mpc | head -n 1)") 
+    return g:song[:-2]
+endfunction
+" setup for airline
+let g:airline_section_b = '%{strftime("%a %d. %H:%M")}'
+"let g:airline_section_y = '%{NowPlaying()}'    "May cause visual glitches
+"(insertion of j,k,h,l chars)
+let g:airline_powerline_fonts = 1
+let g:airline_theme  = 'violet'
+
+" setup for ycm
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_python_binary_path = 'python'
+let g:ycm_complete_in_comments = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_semantic_triggers =  {
+  \ 'c' : ['re!\w{2}'],
+  \ 'cpp' : ['re!\w{2}'],
+  \ 'python' : ['re!\w{2}'], 
+  \ }
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips","vim-snippets"]
+
+" setup for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:markdown_enable_spell_checking = 0
+let b:syntastic_mode = "passive"
+let b:check = "no"
+
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_debug_file = "~/.vim/syntastic.log"
+let g:syntastic_cpp_auto_refresh_includes = 1
+let g:syntastic_cpp_compiler = 'gcc'
+
+"Toggle Syntastic 
+function! ToggleSyntastic()
+   if exists("b:check") && b:check == "yes"
+       let b:check = "no"
+       SyntasticReset
+    else
+        let b:check = "yes"
+        SyntasticCheck
+    endif
+endfunction
+
+" autoformat
+augroup autoformat_settings
+  autocmd FileType python AutoFormatBuffer yapf
+augroup END
+
+autocmd BufNewFile,BufRead *.tex IndentLinesDisable 
+autocmd BufNewFile,BufRead *.tex set filetype=tex syntax=tex
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+autocmd FileType tex set spell spelllang=de
+autocmd FileType markdown set spell spelllang=de
+" use google style for clang-format
+Glaive codefmt clang_format_style='google'
+
+" open NERDTree automatically when vim starts up on opening a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+"pydocstring and autohiding
+set foldmethod=syntax  
+set foldnestmax=10
+set foldenable
+set foldlevel=0
+set foldclose=all
+
+autocmd FileType python setlocal foldenable foldmethod=syntax
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+let g:pydocstring_doq_path = '~/.local/bin/doq'
+let g:pydocstring_formatter = 'google'
+set foldtext=getline(v:foldstart+1)
+
+"Bindings
+map <silent> <F5> : NERDTreeToggle<CR>
+nnoremap <S-s> :w! \|:silent !$HOME/scripts/bash/compiler.sh <c-r>%<CR><C-l> 
+nnoremap <silent> <F4> :silent !$HOME/scripts/bash/opout.sh <c-r>%<CR><C-l> 
+nnoremap <silent> <C-f> :call ToggleCoding()<CR>
+nnoremap <silent> <NUL> :Pydocstring <CR>
+nnoremap <silent> <space> za
+nnoremap <silent> <S-c> :call ToggleSyntastic()<CR>
+nnoremap <silent> <C-f> :FormatCode clang-format<CR>
+"autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+
+"colorscheme
+set background=dark
+colorscheme dracula
+
+"remove colorscheme background -> use terminal bg
+hi Normal guibg=NONE ctermbg=NONE
+hi NonText ctermbg=none ctermfg=NONE 
+hi EndOfBuffer ctermbg=none
+hi LineNr ctermbg=none
+hi Folded ctermbg=NONE guibg=NONE
+hi SignColumn ctermbg=NONE guibg=NONE
+hi VertSplit ctermbg=NONE ctermfg=NONE
+hi Statement cterm=italic
+hi String cterm=italic
+
+" setup for goyo & limelight
+let g:limelight_conceal_ctermfg = 'gray'
+let g:goyo_width = 130
+let g:goyo_height = 95
+let b:code = "no"
+
+"Toggle Goyo and Limelight on and off
+function! ToggleCoding()
+    if exists("b:code") && b:code == "yes"
+        let b:code = "no"
+        Goyo!
+        Limelight!
+    else
+        let b:code = "yes"
+        Goyo
+        Limelight
+    endif
+endfunction
+
+"remove weird background change on exit 
+function s:goyo_enter()
+    hi! VertSplit guibg=NONE
+endfunction
+
+function s:goyo_leave()
+    hi Normal guibg=NONE ctermbg=NONE
+    hi NonText ctermbg=none ctermfg=NONE 
+    hi EndOfBuffer ctermbg=none
+    hi LineNr ctermbg=none
+endfunction
+
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+    
+
+"startify options
+let g:header_ascii = [
+            \ ' =================     ===============     ===============   ========  ======== ',
+            \ ' \\ . . . . . . .\\   //. . . . . . .\\   //. . . . . . .\\  \\. . .\\// . . // ',
+            \ ' ||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\/ . . .|| ',
+            \ ' || . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . || ',
+            \ ' ||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .|| ',
+            \ ' || . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\ . . . . || ',
+            \ ' ||. . ||   ||-''  || ||  `-||   || . .|| ||. . ||   ||-''  || ||  `|\_ . .|. .|| ',
+            \ ' || . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\ `-_/| . || ',
+            \ ' ||_-'' ||  .|/    || ||    \|.  || `-_|| ||_-'' ||  .|/    || ||   | \  / |-_.|| ',
+            \ ' ||    ||_-''      || ||      `-_||    || ||    ||_-''      || ||   | \  / |  `|| ',
+            \ ' ||    `''         || ||         `''    || ||    `''         || ||   | \  / |   || ',
+            \ ' ||            .==='' `===.         .===''.`===.         .==='' /==. |  \/  |   || ',
+            \ ' ||         .==''   \_|-_ `===. .===''   _|_   `===. .==='' _-|/   `==  \/  |   || ',
+            \ ' ||      .==''    _-''    `-_  `=''    _-''   `-_    `=''  _-''   `-_  /|  \/  |   || ',
+            \ ' ||   .==''    _-''          `-__\._-''         `-_./__-''         `'' |. /|  |   || ',
+            \ ' ||.==''    _-''                                                     `'' |  /==.|| ',
+            \ ' ==''    _-''                                                            \/   `== ',
+            \ ' \   _-''                                                                `-_   / ',
+            \ '  `''                                                                      ``''  ',	    
+            \ ]
+
+let g:startify_custom_header = startify#center(g:header_ascii)
+
+" setup for ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:vim_markdown_folding_disabled = 1
+
+" setup for tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" setup for indent line
+let g:indentLine_char = '│'
+set tags=./tags,tags;$HOME
+
+let g:minimap_auto_start=1
+hi MinimapCurrentLine ctermfg=3
+let g:minimap_highlight = 'MinimapCurrentLine'
+
+"source ~/cscope_maps.vim
+
+
