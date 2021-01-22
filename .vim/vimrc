@@ -75,6 +75,7 @@ au BufNewFile,BufRead *.ino set ft=c
 autocmd FileType c,cpp,html,css,ino setlocal expandtab shiftwidth=2 softtabstop=2 cindent nofoldenable 
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4 autoindent
 autocmd VimLeave *.tex !bash $HOME/scripts/bash/texclear.sh %
+autocmd VimLeave *.md :!pkill grip &
 
 " get current song
 function! NowPlaying()
@@ -111,11 +112,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips","vim-snippets"]
 
 " setup for syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:markdown_enable_spell_checking = 0
@@ -183,21 +184,21 @@ nnoremap <silent> <space> za
 nnoremap <silent> <S-c> :call ToggleSyntastic()<CR>
 nnoremap <silent> <C-f> :FormatCode clang-format<CR>
 "autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-
 "colorscheme
 set background=dark
 colorscheme dracula
 
 "remove colorscheme background -> use terminal bg
-hi Normal guibg=NONE ctermbg=NONE
-hi NonText ctermbg=none ctermfg=NONE 
-hi EndOfBuffer ctermbg=none
-hi LineNr ctermbg=none
-hi Folded ctermbg=NONE guibg=NONE
-hi SignColumn ctermbg=NONE guibg=NONE
-hi VertSplit ctermbg=NONE ctermfg=NONE
-hi Statement cterm=italic
-hi String cterm=italic
+hi! Normal guibg=NONE ctermbg=NONE
+hi! NonText ctermbg=NONE ctermfg=NONE 
+hi! EndOfBuffer ctermbg=NONE ctermfg=magenta
+hi! LineNr ctermbg=NONE
+hi! Folded ctermbg=NONE guibg=NONE
+hi! SignColumn ctermbg=NONE guibg=NONE 
+hi! Statement cterm=italic
+hi! String cterm=italic
+hi! VertSplit ctermbg=NONE guibg=NONE cterm=NONE ctermfg=magenta
+
 
 " setup for goyo & limelight
 let g:limelight_conceal_ctermfg = 'gray'
