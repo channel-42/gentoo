@@ -46,6 +46,7 @@ bindkey -v '^?' backward-delete-char
 
 #aliases
 alias la='ls -la'
+alias bra='$HOME/scripts/bash/bra'
 alias dgit='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' 
 alias ugit='/usr/bin/git --git-dir=$HOME/Documents/.uni --work-tree=$HOME/Documents' 
 alias discord='discord --no-sandbox'
