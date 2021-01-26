@@ -51,15 +51,7 @@ font-family: "monospace", sans-serif;
   height: 4em;
 }
 
-.logo{
-  display: flex;
-  align-self: center;
-  width: 20em;
-}
-.logo img{
-padding-left: 0em;
-width: 100%;
-}
+
 
 #clock {
 	height: 10vh;
@@ -68,12 +60,14 @@ width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 50pt;
+	font-size: 100pt;
+        padding-top: 1em; 
+        padding-bottom: 0.25em;
         text-shadow: 0.2em 0.2em 0.15em rgba(0,0,0,0.25);
 }
-#quote{
-  padding: 5em 1em;
-  font-size: 20pt;
+#greeter{
+  padding-top: 2em;
+  font-size: 50pt;
   color: #4d4d4d;
   text-align: center;
 }
