@@ -25,9 +25,9 @@ SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
 
 #PLUGINS
-plugins=(git)
-#plugins=(git zsh-autosuggestions)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=14"
+#plugins=(git)
+plugins=(git zsh-autosuggestions)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 alias wpp="/home/lukas/scripts/bash/wpp"
 
 # Basic auto/tab complete:
@@ -58,4 +58,4 @@ alias discord='discord --no-sandbox'
 #alias gtp='gotop -c minimal'
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh 2>/dev/null
