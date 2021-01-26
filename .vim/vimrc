@@ -42,8 +42,8 @@ Plugin 'ap/vim-css-color'
 Plugin 'Yggdroot/indentLine'
 Plugin 'aars/syntastic-platformio'
 "Plugin 'wfxr/minimap.vim'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'lervag/vimtex'
 
 " All of your Plugins must be added before the following line
@@ -177,6 +177,7 @@ set foldtext=getline(v:foldstart+1)
 "Bindings
 map <silent> <F5> : NERDTreeToggle<CR>
 nnoremap <S-s> :w! \|:silent !$HOME/scripts/bash/compiler.sh <c-r>%<CR><C-l> 
+nnoremap <S-m> :w! \|:silent !$HOME/scripts/bash/make.sh <c-r>%<CR><C-l> 
 nnoremap <silent> <F4> :silent !$HOME/scripts/bash/opout.sh <c-r>%<CR><C-l> 
 nnoremap <silent> <C-f> :call ToggleCoding()<CR>
 nnoremap <silent> <NUL> :Pydocstring <CR>
