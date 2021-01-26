@@ -6,7 +6,9 @@ These are the dotfiles, config-files and scripts of my gentoo box.
 ## Contents
 1. [Goal](#goal)
 2. [General setup](#general-setup)
-3. [Theme and colors](#theme-and-colors)
+3. [Browser](#browser)
+4. [Theme and colors](#theme-and-colors)
+4. [Scripts](#scripts)
 
 ## Goal
 The main goal of this setup is to have a minimal, distraction-free, but still pleasant-looking working environment for daily computer usage (coding and scripting, web-browsing, chatting, etc.).  
@@ -28,14 +30,25 @@ Here's an overview an overview of the software I use:
 |Compositor|picom|
 |Text Editor|vim (w/ vundle)|
 |File Browser|ranger|
-|Browser|firefox|
+|Browser|librewolf|
 |Music Player|ncmpcpp|
 |PDF-Viewer|zathura|
 |Launcher|dmenu|
 
-### Kernel
+## Browser
+
+Librewolf offers good privacy defaults and uses firefox as it's base, so it was easy to port my config. The only downside (for me) is that some webgl sites (like e.g. pixlr.com) don't work.
+
+I use librewolf with a few plugins to enhance it even further:
+- ublock (included by default), **webRTC-leak-blocker enabled!**
+- user-agent spoofer
+- https-everywhere (technically not needed)
+- darkreader
+- keepassxc extension
+
+## Kernel
 ![kernel pic](https://github.com/channel-42/gentoo/blob/master/Pictures/.resources/kernel.png "Screenshot of my desktop")
-The kernel-config included in this repo is tailored to my hardware. In general this kernel includes the following: 
+The kernel-config included in this repo is tailored to my hardware, so I wouldn't recommend using it without some tweaking. In general this kernel includes the following: 
 - amd cpu (ryzen) support w/ microcode
 - nvidia drm drivers (not nouveau)
 - nvme-ssd support
@@ -45,7 +58,15 @@ The kernel-config included in this repo is tailored to my hardware. In general t
 And some other hardware specific modules found by running `lspci -k | grep use`. The initramfs is generated with `genkernel`.
 
 ## Theme and colors
-
-The system's theme is dracula with some modified colors (mainly the background) to bring out the purple shades of the palette. Purple colorschemes fit gentoo system well in my opinion. 
+### Dracula
+The system's theme is dracula with some modified colors (mainly the background) to bring out the purple shades of the palette. Purple colorschemes fit gentoo system well in my opinion. Here's how it looks in vim:
 
 ![another screenshot](https://github.com/channel-42/gentoo/blob/master/Pictures/.resources/colors.png "Screenshot of my desktop")
+### Librewolf
+My librewolf is styled using a custom `userChrome.css`, which is based on [this](https://github.com/mut-ex/minimal-functional-fox) great repo. I changed the colors to match the dracula system theme. As a startpage, I use a simple website that I wrote myself (see `.config/startpage/`). 
+
+![librewolf screenshot](https://github.com/channel-42/gentoo/blob/master/Pictures/.resources/browser.png "Screenshot librewolf")
+
+## Scripts
+
+My scripts are currently not in the repo, as I'm re-writing them at the moment.
