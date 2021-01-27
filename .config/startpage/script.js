@@ -3,13 +3,14 @@ let date = new Date()
 let winterTime = 1;
 
 function greeter(hour, user) {
-    if(4 < hour && hour < 10){
+    console.log(hour)
+    if(4 < hour && hour <= 10){
         return `Good morning, ${user}`
-    } else if ( 10 < hour && hour < 14){
+    } else if ( 10 < hour && hour <= 14){
         return `Hello, ${user}`
-    } else if (14 < hour && hour < 17){
+    } else if (14 < hour && hour <= 17){
         return `Good afternoon, ${user}`
-    }else if (17 < hour && hour < 22){
+    }else if (17 < hour && hour <= 22){
         return `Good evening, ${user}`
     }else{
         return `Good night, ${user}`
