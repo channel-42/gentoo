@@ -46,6 +46,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
 #aliases
+alias vim='nvim'
 alias la='ls -la'
 alias bra='$HOME/scripts/bash/bra'
 alias wled='$HOME/scripts/bash/wled'
