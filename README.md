@@ -6,9 +6,10 @@ These are the dotfiles, config-files and scripts of my gentoo box.
 ## Contents
 1. [Goal](#goal)
 2. [General setup](#general-setup)
-3. [Browser](#browser)
-4. [Theme and colors](#theme-and-colors)
-4. [Scripts](#scripts)
+3. [nvim](#nvim)
+4. [Browser](#browser)
+5. [Theme and colors](#theme-and-colors)
+6. [Scripts](#scripts)
 
 ## Goal
 The main goal of this setup is to have a minimal, distraction-free, but still pleasant-looking working environment for daily computer usage (coding and scripting, web-browsing, chatting, etc.).  
@@ -23,17 +24,33 @@ Here's an overview an overview of the software I use:
 
 | Category | Name |
 |:--------:|:----:|
-|WM|dwm|
-|Bar|dwm / slstatus|
-|Terminal|urxvt|
-|Shell|zsh w/ oh-my-zsh|
-|Compositor|picom|
-|Text Editor|vim (w/ vundle)|
-|File Browser|ranger|
-|Browser|librewolf|
-|Music Player|ncmpcpp|
-|PDF-Viewer|zathura|
-|Launcher|dmenu|
+|wm|dwm|
+|bar|dwm / slstatus|
+|terminal|urxvt|
+|shell|zsh w/ oh-my-zsh|
+|compositor|picom|
+|text Editor|nvim|
+|file browser|ranger|
+|browser|librewolf|
+|music player|ncmpcpp|
+|pdf-viewer|zathura|
+|launcher|dmenu|
+
+## nvim
+
+![vim example](https://github.com/channel-42/gentoo/blob/master/Pictures/.resources/nvim.png "Example of nvim")
+
+After using vim for quite some time, I recently switched to nvim and ported (and also de-cluttered) my config. Nvim offers native lsp support, which works great for code-completion and syntax-checking. The config is still a WIP and some features, like LaTeX support, are still missing. I also decided to split the config into different files to keep things tidy and easy to modify.
+
+My NeoVim config adds the following:
+- lsp-completion
+- lsp-syntax checking
+- enhanced lsp-syntax highlighting (treesitter)
+- snippets
+- easier nav-bindings for jumping buffers
+- some visual enhancements 
+
+![completion example](https://github.com/channel-42/gentoo/blob/master/Pictures/.resources/nvim_feat.png "Example of nvim completion")
 
 ## Browser
 
@@ -69,4 +86,18 @@ My librewolf is styled using a custom `userChrome.css`, which is based on [this]
 
 ## Scripts
 
-My scripts are currently not in the repo, as I'm re-writing them at the moment.
+Most scripts are used in nvim as bindings (e.g. to compile a file), but there are also other scripts used for "quality of life" improvements.
+
+- **bra**: "brightness adjust" through xrandr
+- **wpp**: wallpaper setter (different methods)
+- **wled**: control wled led strips
+- **manmenu**: search man pages with dmenu
+- **emoji.sh**: search emojis and copy them to the clipboard with dmenu
+- **palette.sh**: show a pretty color palette
+
+### nvim scripts
+
+- **compiler.sh**: autocompile files
+- **opout.sh**: open a compiled file
+- **texclear.sh**: clean LaTeX compile files
+- **make.sh**: find a makefile in higher dirs and make 
