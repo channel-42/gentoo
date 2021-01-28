@@ -1,0 +1,8 @@
+#!/bin/bash
+# channel-42
+# sets display brightness in %
+
+display=$(xrandr -q | grep " connected" | cut -d" " -f 1 )
+bri=$(echo "$1/100" | bc -l)
+echo "Setting brightness to $1%"
+xrandr --output "$display" --brightness "$bri"

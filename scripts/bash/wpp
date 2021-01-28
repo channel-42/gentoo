@@ -1,0 +1,77 @@
+#!/bin/bash
+# channel-42
+# This script selects and applies a random wallaper from the ~/Pictures/Wallpapers Directory
+# Or it searches for a user-defined file
+# dmenu needs the lineheight patch
+
+DIR="$HOME/Pictures/Wallpapers/"   #Wallpaper Directory
+COL1="#141022"
+COL2="#bbbbbb"
+COL3="#eeeeee"
+COL4="#7957b9"
+
+help="Usage:
+$(basename $0) [-h] [-s] [-c <path/to/file>]
+Options:
+ -h,        display this help
+ -s,        display graphical menu (requires rofi)
+ -st,       display graphical menu by date (requires rofi)
+ -c,        set provided image as wallpaper
+ -g,        display graphical preview menu mode (requires sxiv)
+
+In -g mode, press <m> to mark an image and <q> to exit and set the last marked image ass wallpaper.
+"
+case "$1" in                    #check if user has inputed request
+    "")                         #if no imput, randowm wallpaper
+        cd "$DIR"               #change to wpp dir
+        WALLS=( $(ls) )         #create array with all wallpapers
+        RANDOM=$$$(date +%s)    #generate random number
+        selectedwall=${WALLS[$RANDOM % ${#WALLS[@]} ]}  #select a random wallpaper
+        final="${DIR}${selectedwall}"   #join strings for final command
+        ;; 
+    "-s")                       #show all Wallpapers user ui
+        selectedwall=$(ls  $HOME/Pictures/Wallpapers | dmenu -h 30 -fn monospace:size=14 -nb "$COL1" -nf "$COL2" -sb "$COL4" -sf "$COL3" -l 20)
+        if [ -d "${DIR}${selectedwall}/" ];
+        then
+            selectedwall_next=$(ls -t $HOME/Pictures/Wallpapers/${selectedwall} | dmenu -h 30 -fn monospace:size=14 -nb "$COL1" -nf "$COL2" -sb "$COL4" -sf "$COL3" -l 20 )
+            final=("${DIR}${selectedwall}/${selectedwall_next}")
+        else
+            final=("${DIR}${selectedwall}")
+        fi
+        ;;
+    "-st")
+        selectedwall=$(ls -t $HOME/Pictures/Wallpapers | dmenu -h 30 -fn monospace:size=14 -nb "$COL1" -nf "$COL2" -sb "$COL4" -sf "$COL3" -l 20)
+        if [ -d "${DIR}${selectedwall}/" ];
+        then
+            selectedwall_next=$(ls -t $HOME/Pictures/Wallpapers/${selectedwall} | dmenu -h 30 -fn monospace:size=14 -nb "$COL1" -nf "$COL2" -sb "$COL4" -sf "$COL3" -l 20)
+            final=("${DIR}${selectedwall}/${selectedwall_next}")
+        else
+            final=("${DIR}${selectedwall}")
+        fi
+        ;;
+    "-c")                          #custom path to wpp
+        if test -f "$2"; then #check files existance
+            final="$2"
+        else
+            echo "Error: File not found"   #on error
+            exit 1
+        fi
+        ;;
+    "-h")
+        echo "$help"
+        ;;
+    "-g")
+        selectedwall=$(sxiv -s d -tbo $HOME/Pictures/Wallpapers | tail -n 1)
+        final=("${selectedwall}")
+        ;;
+    *)  
+        echo "not an supported option. See wpp -h for help."
+        exit 1
+esac
+if [[ "$final" != "" ]]; then
+    feh --bg-fill "$final" &>/dev/null    #set wallpaper; supress errors
+else
+    echo "no file specified"
+    exit 1
+fi
+

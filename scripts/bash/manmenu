@@ -1,0 +1,10 @@
+#!/bin/bash
+# dmenu script for looking up man pages
+# dmenu needs the lineheight patch
+
+COL1="#141022"
+COL2="#bbbbbb"
+COL3="#eeeeee"
+COL4="#7957b9"
+
+man -k . | awk '{print $1}' | dmenu -p "search mans: " -h 30 -fn monospace:size=14 -nb "$COL1" -nf "$COL2" -sb "$COL4" -sf "$COL3" -l 20  | xargs urxvt -e man

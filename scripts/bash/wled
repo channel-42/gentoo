@@ -1,0 +1,58 @@
+#!/bin/bash
+# channel-42
+# control wled devices throught the http api
+# replace IP with your esp's IP addr
+esp_IP="192.168.178.195"
+IP="$esp_IP/win&"
+help="Usage:
+$(basename $0) -<option>=<val>
+Options:
+ -b,        brightness              {0..255} 
+ -o,        state (on, off, toggle) {0,1,2} 
+ -p,        color pallete           {0..46} 
+ -s,        effect speed            {0..255} 
+ -i,        effect intensity        {0..255} 
+ -e,        effect type             {0..101} 
+ -h,        display this help 
+"
+
+parseArg(){
+    arg=$(echo "$1" | cut -d"=" -f 1)
+    val=$(echo "$1" | cut -d"=" -f 2) 
+    #echo $arg = $val
+    case "$arg" in
+    "-b")
+        api_arg="A="
+        ;;
+    "-o")
+        api_arg="T="
+        ;;
+    "-p")
+        api_arg="FP="
+        ;;
+    "-s")
+        api_arg="SX="
+        ;;
+    "-i")
+        api_arg="IX="
+        ;;
+    "-e")
+        api_arg="FX="
+        ;;
+    "-h")
+        echo "$help"
+        ;;
+    *)
+        echo "option $arg invalid!"
+        exit 1
+        ;;
+    esac
+    #echo "$IP$api_arg$val" 
+    curl "$IP$api_arg$val" &> /dev/null
+}
+
+for var in "$@"
+do 
+    parseArg "$var"
+    #echo "$var" 
+done
