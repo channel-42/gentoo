@@ -85,6 +85,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-h", "30" , "-fn
 //static const char *termcmd[]  = { "urxvt", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *browsercmd[]  = { "librewolf-bin", NULL };
+static const char *scrsht[]  = { "exec", "/home/lukas/bash/screenshot.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -107,6 +108,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[11]} },
  	{ MODKEY|ShiftMask,             XK_c,      setlayout,      {.v = &layouts[12]} },
  	{ MODKEY,	                XK_s,      setlayout,      {.v = &layouts[3]} },
+ 	{ MODKEY|ControlMask,	        XK_s,      spawn,          SHCMD("sleep 0.2; scrot -s /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'") },
 	{ MODKEY|ShiftMask,             XK_f,  	   togglefloating, {0} },
 	{ MODKEY,              		XK_plus,   incrgaps,       {.i = +10 } },
 	{ MODKEY,    			XK_minus,  incrgaps,       {.i = -10 } },
