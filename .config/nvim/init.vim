@@ -23,6 +23,9 @@ set softtabstop=4
 set smartindent
 set autoindent
 set updatetime=300
+set conceallevel=0
+" some plugin options
+let g:indentLine_fileTypeExclude = ['markdown', 'startify']
 "autocommands
 autocmd BufNewFile,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md  set ft=markdown
 autocmd BufNewFile,BufRead *.ino set ft=c
