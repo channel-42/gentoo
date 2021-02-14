@@ -26,7 +26,7 @@ Here's an overview an overview of the software I use:
 |:--------:|:----:|
 |wm|dwm|
 |bar|dwm / slstatus|
-|terminal|urxvt|
+|terminal|alacritty|
 |shell|zsh w/ oh-my-zsh|
 |compositor|picom|
 |text Editor|nvim|
@@ -40,9 +40,9 @@ Here's an overview an overview of the software I use:
 
 ![vim example](https://github.com/channel-42/gentoo/blob/master/Pictures/.resources/nvim.png "Example of nvim")
 
-After using vim for quite some time, I recently switched to nvim and ported (and also de-cluttered) my config. Nvim offers native lsp support, which works great for code-completion and syntax-checking. The config is still a WIP and some features, like LaTeX support, are still missing. I also decided to split the config into different files to keep things tidy and easy to modify.
+After using vim for quite some time, I recently switched to nvim and ported (and also de-cluttered) my config. The config is still a WIP and some features, like LaTeX support, are still missing. 
 
-My NeoVim config adds the following:
+My nvim config includes the following:
 - lsp-completion
 - lsp-syntax checking
 - enhanced lsp-syntax highlighting (treesitter)
@@ -52,14 +52,16 @@ My NeoVim config adds the following:
 
 ![completion example](https://github.com/channel-42/gentoo/blob/master/Pictures/.resources/nvim_feat.png "Example of nvim completion")
 
+If you want to learn more about my nvim setup, check out my [blog post](https://blog.devls.de/nvim-setup/nvim-setup.html).
+
 ## Browser
 
-Librewolf offers good privacy defaults and uses firefox as it's base, so it was easy to port my config. The only downside (for me) is that some webgl sites (like e.g. pixlr.com) don't work.
+Librewolf offers good privacy defaults and uses firefox as it's base, so it was easy to port my existing config. 
 
-I use librewolf with a few plugins to enhance it even further:
+I use these plugins:
 - ublock (included by default), **webRTC-leak-blocker enabled!**
 - user-agent spoofer
-- https-everywhere (technically not needed)
+- https-everywhere *(technically not needed)*
 - darkreader
 - keepassxc extension
 
@@ -76,7 +78,7 @@ And some other hardware specific modules found by running `lspci -k | grep use`.
 
 ## Theme and colors
 ### Dracula
-The system's theme is dracula with some modified colors (mainly the background) to bring out the purple shades of the palette. Purple colorschemes fit gentoo system well in my opinion. Here's how it looks in vim:
+The system's theme is dracula with some modified colors (mainly the background) to bring out the purple shades of the palette. Purple colorschemes fit gentoo systems well in my opinion. Here's how it looks in nvim:
 
 ![another screenshot](https://github.com/channel-42/gentoo/blob/master/Pictures/.resources/colors.png "Screenshot of my desktop")
 ### Librewolf
@@ -90,7 +92,7 @@ Most scripts are used in nvim as bindings (e.g. to compile a file), but there ar
 
 - **bra**: "brightness adjust" through xrandr
 - **wpp**: wallpaper setter (different methods)
-- **wled**: control wled led strips
+- **wled**: control wled led strips **-> will soon be deprecated for [wlc](https://github.com/channel-42/wlc)**
 - **manmenu**: search man pages with dmenu
 - **emoji.sh**: search emojis and copy them to the clipboard with dmenu
 - **palette.sh**: show a pretty color palette
