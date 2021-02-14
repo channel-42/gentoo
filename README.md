@@ -50,8 +50,6 @@ My nvim config includes the following:
 - easier nav-bindings for jumping buffers
 - some visual enhancements 
 
-![completion example](https://github.com/channel-42/gentoo/blob/master/Pictures/.resources/nvim_feat.png "Example of nvim completion")
-
 If you want to learn more about my nvim setup, check out my [blog post](https://blog.devls.de/nvim-setup/nvim-setup.html).
 
 ## Browser
