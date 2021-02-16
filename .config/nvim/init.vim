@@ -10,7 +10,7 @@ set mouse=a
 set hidden
 set splitbelow 
 set splitright
-set number
+set number relativenumber
 set encoding=utf-8
 set backspace=indent,eol,start
 set cursorline

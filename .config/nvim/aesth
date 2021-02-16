@@ -5,6 +5,7 @@ colorscheme dracula
 
 au ColorScheme * hi Normal ctermbg=None
 au ColorScheme * hi VertSplit cterm=None ctermfg=magenta
+au ColorScheme * hi CursorLineNr cterm=None ctermfg=5
 au ColorScheme * hi EndOfBuffer ctermfg=magenta
 au ColorScheme * hi LspDiagnostigsDefaultError ctermfg=red
 au ColorScheme * hi LspDiagnostigsDefaultWarning ctermfg=yellow 
