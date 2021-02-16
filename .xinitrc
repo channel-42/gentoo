@@ -11,7 +11,7 @@ doas liquidctl set logo color fixed 19d8f0
 nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=0"
 #user env
 exec $HOME/scripts/bash/wpp &
-exec $HOME/scripts/bash/wled -b=200 -e=38 -s=20 -i=255 -p=40 &
+exec wlc -b 200 -e Aurora -p Magenta -i 255 -f 10 &
 exec picom --xrender-sync-fence &
 exec slstatus &
 exec unclutter & 
