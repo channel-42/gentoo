@@ -28,7 +28,7 @@ playlist_editor_display_mode = "columns"
 browser_display_mode = "columns"
 
 search_engine_display_mode = "columns"
-execute_on_song_change="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
+#execute_on_song_change="~/.config/ncmpcpp/ncmpcpp-ueberzug/ncmpcpp_cover_art.sh"
 autocenter_mode = "yes"
 
 mouse_support = "yes"
