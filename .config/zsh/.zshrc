@@ -48,6 +48,9 @@ bindkey -v '^?' backward-delete-char
 
 #aliases
 alias vim='nvim'
+alias cheat='$HOME/scripts/bash/cheat.sh'
+# temp fix for driver issues
+alias nvs='echo $(exec nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=0")'
 alias la='ls -la'
 alias bra='$HOME/scripts/bash/bra'
 alias wled='$HOME/scripts/bash/wled'
