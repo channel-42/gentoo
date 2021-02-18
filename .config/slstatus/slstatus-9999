@@ -65,7 +65,9 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          	argument */
-	{ netspeed_rx, "  %sB/s  ",     	"enp8s0" },
-	{ temp, 	"  %s�C  ",     	"/sys/class/hwmon/hwmon1/device/hwmon/hwmon1/temp1_input" },
-	{ datetime, 	"  %s  ",		"%b %d @ %H:%M" },
+	/*{ netspeed_rx, "  %sB/s  ",     	"enp8s0" },*/
+	/*{ load_avg, "  l_avg: %s  ",     	NULL },*/
+	{ run_command,  "   %s  ",            "exec $HOME/scripts/bash/music_bar.sh"},
+	{ temp, 	"  %s°C  ",     	"/sys/class/hwmon/hwmon1/device/hwmon/hwmon1/temp1_input" },
+	{ datetime, 	"  %s  ",		"%b %d :: %H:%M" },
 };
