@@ -9,6 +9,8 @@ au ColorScheme * hi CursorLineNr cterm=None ctermfg=5
 au ColorScheme * hi EndOfBuffer ctermfg=magenta
 au ColorScheme * hi LspDiagnostigsDefaultError ctermfg=red
 au ColorScheme * hi LspDiagnostigsDefaultWarning ctermfg=yellow 
+au ColorScheme * hi FloatermBorder ctermfg=magenta ctermbg=None
+au ColorScheme * hi Floaterm ctermbg=None
 
 sign define LspDiagnosticsSignError text=! texthl=LspDiagnosticsSignError linehl= numhl=
 sign define LspDiagnosticsSignWarning text=> texthl=LspDiagnosticsSignWarning linehl= numhl=
