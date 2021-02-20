@@ -1,0 +1,9 @@
+set confirm off
+set history save off
+dashboard -layout assembly variables registers breakpoints !memory !expressions !history !source !stack !threads
+define hookpost-up
+dashboard
+end
+define hookpost-down
+dashboard
+end
