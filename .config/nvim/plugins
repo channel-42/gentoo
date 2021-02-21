@@ -16,6 +16,9 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'Raimondi/delimitMate'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-rooter'
 call plug#end()
 filetype plugin indent on    "required
 

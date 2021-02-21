@@ -5,6 +5,8 @@ source ~/.config/nvim/aesth
 source ~/.config/nvim/bindings
 source ~/.config/nvim/completion
 source ~/.config/nvim/floatterm
+source ~/.config/nvim/fzf
+packadd termdebug
 "settings
 syntax on
 set mouse=a
