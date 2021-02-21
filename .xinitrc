@@ -2,6 +2,8 @@
 setxkbmap de
 xrdb -load ~/.Xresources
 xrandr --output DP-2 --mode 3440x1440 --rate 100
+#set delay and repeat rate
+xset r rate 400 80 &
 #liquidcooler settings
 doas liquidctl set fan speed 33 25 34 50 40 80 45 100
 doas liquidctl set pump speed 33 50 34 65 40 80 45 100
