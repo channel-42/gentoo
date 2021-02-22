@@ -12,6 +12,7 @@ export LAMBDA_MOD_N_DIR_LEVELS=5
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="/usr/bin/nvim"
 export GPG_TTY=$(tty)
+export MANPAGER='nvim +Man!'
 autoload -U colors && colors
 #is overwritten by oh-my-zsh
 PROMPT="%B%n@%M [ %~ ] 

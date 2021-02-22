@@ -23,5 +23,5 @@ call plug#end()
 filetype plugin indent on    "required
 
 " setup for indent line
-let g:indentLine_char = '│'
+let g:indentLine_char = '┊'
 set tags=./tags,tags;$HOME
