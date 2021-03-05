@@ -8,7 +8,7 @@ source ~/.config/nvim/floatterm
 source ~/.config/nvim/fzf
 packadd termdebug
 "settings
-syntax on
+syntax enable
 set mouse=a
 set hidden
 set splitbelow 
@@ -17,6 +17,7 @@ set number relativenumber
 set encoding=utf-8
 set backspace=indent,eol,start
 set cursorline
+set complete+=kspell
 set nospell
 set clipboard+=unnamedplus
 set fillchars+=vert:\▏
