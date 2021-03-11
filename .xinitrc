@@ -17,6 +17,6 @@ exec slstatus &
 exec unclutter & 
 #gpu fans off
 # doesnt work cause nvidia drivers are broken (who wouldve guessed)
-#exec nvidia-settings -a "[gpu:0]/GPUFanControlState=1" && nvidia-settings -a "[fan:0]/GPUTargetFanSpeed=0" & 
-nvidia-settings --load-config-only &> /home/lukas/.nvlog
+exec nvidia-settings -a "[gpu:0]/GPUFanControlState=1" && nvidia-settings -a "[fan:0]/GPUTargetFanSpeed=0" & 
+#nvidia-settings --load-config-only &> /home/lukas/.nvlog
 exec dwm 
