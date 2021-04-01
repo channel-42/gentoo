@@ -4,7 +4,9 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 " removing this break which-key delay for some reasom ?!
-map <leader>b :Buffers<CR>
+" maybe which-key only waits if a leader command is mapped
+" eihter way, this is the same binding as defined with which-key
+map <leader>b? :Buffers<CR>
 
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and

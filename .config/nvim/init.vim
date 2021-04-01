@@ -41,6 +41,7 @@ set autoindent
 set updatetime=300
 set conceallevel=0
 set shortmess+=c
+set tags=./tags,tags;$HOME
 set timeout 
 " change this for which-key delay
 " also change g:which_key_timeout 
