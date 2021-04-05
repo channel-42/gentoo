@@ -2,7 +2,8 @@ let &packpath = &runtimepath
 " SOURCE OTHER CONFIGS
 " vim script files
 source ~/.config/nvim/plugins.vim
-source ~/.config/nvim/vimscript/colors.vim
+" moved colors to lua
+"source ~/.config/nvim/vimscript/colors.vim
 source ~/.config/nvim/vimscript/bindings.vim
 source ~/.config/nvim/vimscript/lsp.vim
 source ~/.config/nvim/vimscript/fzf.vim
@@ -11,10 +12,13 @@ source ~/.config/nvim/vimscript/zen.vim
 source ~/.config/nvim/vimscript/other.vim
 
 " lua files
+luafile ~/.config/nvim/luafiles/colors.lua
 luafile ~/.config/nvim/luafiles/compe.lua
 luafile ~/.config/nvim/luafiles/dashboard.lua
 luafile ~/.config/nvim/luafiles/completion.lua
 luafile ~/.config/nvim/luafiles/nvimtree.lua
+luafile ~/.config/nvim/luafiles/neogit.lua
+luafile ~/.config/nvim/luafiles/galaxy.lua
 
 " add debugging
 packadd termdebug
@@ -30,6 +34,7 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set cursorline
 set complete+=kspell
+set termguicolors
 set nospell
 set clipboard+=unnamedplus
 set fillchars+=vert:\▏
@@ -50,7 +55,7 @@ set timeoutlen=250
 
 " AUTOCOMMANDS
 " make dahsboard look clean
-autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2
+autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=0
 autocmd FileType dashboard set fillchars+=eob:\ | autocmd WinLeave <buffer> set fillchars+=vert:\▏,eob:\~
 autocmd FileType dashboard set laststatus=0 ruler | autocmd WinLeave <buffer> set laststatus=2 ruler
 

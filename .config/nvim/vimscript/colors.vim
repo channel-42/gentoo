@@ -3,7 +3,8 @@ set background=dark
 colorscheme dracula
 
 "general hl settings
-au ColorScheme * hi Normal ctermbg=None
+au ColorScheme * hi Normal ctermbg=None guibg=None
+au ColorScheme * hi NonText ctermbg=None guibg=None
 au ColorScheme * hi VertSplit cterm=None ctermfg=magenta
 au ColorScheme * hi CursorLineNr cterm=None ctermfg=5
 au ColorScheme * hi CursorLine ctermbg=0 ctermfg=None
@@ -23,7 +24,7 @@ au ColorScheme * hi debugBreakpoint ctermbg=None ctermfg=red
 au ColorScheme * hi debugPC ctermbg=None ctermfg=black ctermbg=5
 
 " dashboard
-au ColorScheme * hi DashboardHeader cterm=None ctermfg=5
+au ColorScheme * hi DashboardHeader cterm=None ctermfg=5 guifg=Red
 au ColorScheme * hi DashboardCenter cterm=None ctermfg=3
 au ColorScheme * hi DashboardShortcut cterm=None ctermfg=3
 au ColorScheme * hi DashboardFooter cterm=None ctermfg=2
@@ -34,3 +35,10 @@ au ColorScheme * hi NvimTreeIndentMarker ctermbg=None ctermfg=4
 au ColorScheme * hi NvimTreeExecFile ctermbg=None ctermfg=2
 au ColorScheme * hi NvimTreePythonIcon ctermbg=None ctermfg=3
 au ColorScheme * hi NvimTreeLicenseIcon ctermbg=None ctermfg=4
+
+"neogit
+au ColorScheme * hi NeogitDiffAdd cterm=None ctermfg=2
+au ColorScheme * hi NeogitDiffDelete cterm=None ctermfg=1
+au ColorScheme * hi NeogitDiffContext cterm=None ctermfg=1
+au ColorScheme * hi NeogitHunkHeader cterm=None ctermfg=1
+au ColorScheme * hi NeogitHunkHeaderHighlight cterm=None ctermfg=6

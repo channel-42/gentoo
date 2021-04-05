@@ -20,17 +20,14 @@ require'compe'.setup {
         calc = {kind = "  "},
         vsnip = {kind = "  "},
         nvim_lsp = {kind = "  "},
-        -- nvim_lua = {kind = "  "},
-		nvim_lua = false,
         spell = {kind = " 暈 "},
         tags = false,
         vim_dadbod_completion = true,
         vsnip = true,
-        -- snippets_nvim = {kind = "  "},
-        -- ultisnips = {kind = "  "},
         treesitter = {kind = "  "},
     }
 }
+
 local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -58,6 +55,7 @@ _G.tab_complete = function()
         return vim.fn['compe#complete']()
     end
 end
+
 _G.s_tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-p>"

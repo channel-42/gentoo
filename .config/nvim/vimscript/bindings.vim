@@ -30,6 +30,9 @@ let g:which_key_map['e'] = [ ':NvimTreeToggle', 'explorer' ]
 let g:which_key_map['?'] = [ ':NvimTreeFindFile', 'find current file' ]
 let g:which_key_map['r'] = [ ':FloatermNew ranger', 'ranger' ]
 let g:which_key_map['M'] = [ ':call MaximizeToggle()', 'maximize buffer' ]
+let g:which_key_map['G'] = [ '<c-w>f', 'goto file' ]
+let g:which_key_map['v'] = [ ':windo wincmd H', 'to vertical' ]
+let g:which_key_map['h'] = [ ':windo wincmd K', 'to horizontal' ]
 let g:which_key_map['F'] = [ 'Format', 'format code' ]
 let g:which_key_map[' '] = [ 'za', 'toggle fold' ]
 
@@ -38,7 +41,13 @@ let g:which_key_map[' '] = [ 'za', 'toggle fold' ]
 " g is for git
 let g:which_key_map.g = {
       \ 'name' : '+git' ,
-      \ 'l' : [':FloatermNew lazygit', 'lazygit'],
+      \ 't' : [':FloatermNew lazygit', 'lazygit'],
+      \ 'g' : [':Neogit', 'status'],
+      \ 'l' : [':Neogit log', 'log'],
+      \ 'c' : [':Neogit commit', 'commit'],
+      \ 'p' : [':Neogit push', 'push'],
+      \ 'P' : [':Neogit pull', 'pull'],
+      \ '?' : [':Neogit help', 'help'],
       \ }
 
 " S is for Session
@@ -84,8 +93,8 @@ let g:which_key_map.c = {
       \ }
 " d is for debug
 let g:which_key_map.d = {
-      \ 'name' : '+debug' ,
-      \ 'b' : ['Break', 'add breakpoint'],
+      \ 'name' : '+debug' , 
+      \ 'b' : ['Break', 'add breakpoint'], 
       \ }
 
 " OTHER BINDINGS (partially) NOT SHOWN IN WHICH_KEY

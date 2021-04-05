@@ -2,6 +2,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
 " coding helpers ----------
 Plug 'Yggdroot/indentLine'
+"Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'}
 Plug 'Raimondi/delimitMate'
 Plug 'ap/vim-css-color'
 
@@ -20,15 +21,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vim-which-key'
+Plug 'TimUntersberger/neogit'
 
 " aesthetics ---------------
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'vim-airline/vim-airline'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 Plug 'dracula/vim'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'glepnir/dashboard-nvim'
 
 call plug#end()
